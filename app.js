@@ -5,9 +5,13 @@ let url="https://newsapi.org/v2/everything?q";
 window.addEventListener("load",()=>FetchNews("Pakistan"));
 
 async function FetchNews(query){
+    try{
     let response= await fetch(`${url}=${query}&apiKey=${apiKey}`);
     let data= await response.json();
     bindData(data.articles);
+    }catch(e){
+        alert("error in fetching api ",e);
+    }
 }
 
 function bindData(articles){
